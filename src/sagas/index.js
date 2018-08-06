@@ -1,4 +1,11 @@
-export default function* helloSaga() {
-    yield console.log('saga world')
-    yield console.log('hello saga')
+import { all } from 'redux-saga/effects'
+
+import { counterSagas } from './counter'
+import { userSagas } from './user'
+
+export default function* rootSaga(){
+    yield all([
+        ...counterSagas,
+        ...userSagas
+    ])
 }
